@@ -92,7 +92,17 @@ public class Desafios {
         System.out.println(numeros.stream().filter(numero -> numero > 5 && numero < 10).toList());
 
         System.out.println("--------------- Desafio 14 - Encontre o maior número primo da lista: ---------------");
-
+        System.out.println(numeros.stream()
+                .filter(n -> {
+                    if (Math.abs(n) < 2)
+                        return false;
+                    for (int i = 2; i < Math.abs(n); i++) {
+                        if (Math.abs(n) % i == 0)
+                            return false;
+                    }
+                    return true;
+                })
+                .max(Comparator.naturalOrder()).orElse(null));
 
     }
 }
